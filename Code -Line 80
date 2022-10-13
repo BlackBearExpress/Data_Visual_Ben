@@ -120,19 +120,21 @@ app.layout = html.Div(children=[
                                 
                                 # TASK3: Add a division with two empty divisions inside. See above disvision for example.
                                 # Enter your code below. Make sure you have correct formatting.
-                                html([
-                                    html.Div([ ], id='plot4'),                                        
-                                    html.Div([ ], id='plot5') 
-                                ],style={'display': 'flex'})
+                                html.Div([
+
+                                      html.Div([ ], id='plot4'),                                        
+                                      html.Div([ ], id='plot5')                                
+
+                                      ], style={'display': 'flex'}), ])  
 
 # Callback function definition
 # TASK4: Add 5 ouput components
 # Enter your code below. Make sure you have correct formatting.
 @app.callback([Output(component_id='plot1', component_property='children'),
                Output(component_id='plot2', component_property='children' ),
-               Output(component_id='plot3', component_property='childern'),
-               Output(component_id='plot4', component_property='childern'),
-               Output(component_id='plot5', component_property='childern')],
+               Output(component_id='plot3', component_property='children'),
+               Output(component_id='plot4', component_property='children'),
+               Output(component_id='plot5', component_property='children')],
                [Input(component_id='input-type', component_property='value'),
                 Input(component_id='input-year', component_property='value')],
                # REVIEW4: Holding output state till user enters all the form information. In this case, it will be chart type and year
@@ -174,7 +176,7 @@ app.layout = html.Div(children=[
             
             # TASK6: Number of flights flying to each state from each reporting airline
             # Enter your code below. Make sure you have correct formatting. 
-            tree_fig = px.treemap(tree_data, path=['DestState', 'Reporting_Airline'],values='Flights',color='Flight', color_continuous_scale='RdBu',title='Fligth count by airline to destibation state')
+            tree_fig = px.treemap(tree_data, path=['DestState', 'Reporting_Airline'], values='Flights', color='Flights', color_continuous_scale='RdBu',title='Flight count by airline to destination state' )
             # REVIEW6: Return dcc.Graph component to the empty division
             return [dcc.Graph(figure=tree_fig), 
                     dcc.Graph(figure=pie_fig),
